@@ -15,6 +15,13 @@
       "when": 1728997644737,
       "tag": "0001_classy_lilandra",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1729015376058,
+      "tag": "0002_blushing_bishop",
+      "breakpoints": true
     }
   ]
 }

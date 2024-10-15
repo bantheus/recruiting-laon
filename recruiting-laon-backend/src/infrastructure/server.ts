@@ -1,3 +1,4 @@
+import { mediaRoutes } from "@/interfaces/http/mediaController";
 import { userRoutes } from "@/interfaces/http/userController";
 import fastify from "fastify";
 import {
@@ -14,6 +15,7 @@ async function createServer() {
 	app.setSerializerCompiler(serializerCompiler);
 
 	app.register(userRoutes);
+	app.register(mediaRoutes);
 
 	app.setErrorHandler(errorHandler);
 
