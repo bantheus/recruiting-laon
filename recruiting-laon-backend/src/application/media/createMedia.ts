@@ -21,8 +21,8 @@ export class CreateMedia {
 			mediaData.director,
 			mediaData.awards,
 			mediaData.rating,
-			mediaData.coverImage,
-			mediaData.trailer,
+			mediaData.coverLink,
+			mediaData.trailerLink,
 		);
 
 		return this.mediaRepository.create(media);

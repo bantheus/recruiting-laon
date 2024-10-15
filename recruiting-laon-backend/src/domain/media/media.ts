@@ -17,7 +17,7 @@ export class Media {
 		public director: string,
 		public awards: string[],
 		public rating: number,
-		public coverImage: string,
-		public trailer: string,
+		public coverLink: string,
+		public trailerLink: string,
 	) {}
 }

@@ -19,8 +19,8 @@ export class MediaRepository implements IMediaRepository {
 			director: media.director,
 			awards: media.awards,
 			rating: media.rating,
-			coverLink: media.coverImage,
-			trailerLink: media.trailer,
+			coverLink: media.coverLink,
+			trailerLink: media.trailerLink,
 		});
 
 		return media;
