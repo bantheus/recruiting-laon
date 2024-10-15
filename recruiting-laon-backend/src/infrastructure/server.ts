@@ -5,6 +5,7 @@ import {
 	serializerCompiler,
 	validatorCompiler,
 } from "fastify-type-provider-zod";
+import { errorHandler } from "./errorHandler";
 
 async function createServer() {
 	const app = fastify({ logger: true }).withTypeProvider<ZodTypeProvider>();
@@ -13,6 +14,8 @@ async function createServer() {
 	app.setSerializerCompiler(serializerCompiler);
 
 	app.register(userRoutes);
+
+	app.setErrorHandler(errorHandler);
 
 	return app;
 }
