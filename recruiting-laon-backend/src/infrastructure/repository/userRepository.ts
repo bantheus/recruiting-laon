@@ -1,5 +1,5 @@
-import type { IUserRepository } from "@/domain/repository/IUserRepository";
-import type { User } from "@/domain/user";
+import type { IUserRepository } from "@/domain/user/repository/IUserRepository";
+import type { User } from "@/domain/user/user";
 import { createId } from "@paralleldrive/cuid2";
 import { eq } from "drizzle-orm";
 import { db } from "../database/connection";

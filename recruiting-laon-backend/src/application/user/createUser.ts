@@ -1,5 +1,5 @@
-import type { IUserRepository } from "@/domain/repository/IUserRepository";
-import { User } from "@/domain/user";
+import type { IUserRepository } from "@/domain/user/repository/IUserRepository";
+import { User } from "@/domain/user/user";
 import { hashPassword } from "@/infrastructure/security/bcrypt";
 import { createId } from "@paralleldrive/cuid2";
 

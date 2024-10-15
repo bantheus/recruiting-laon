@@ -1,4 +1,4 @@
-import type { IUserRepository } from "@/domain/repository/IUserRepository";
+import type { IUserRepository } from "@/domain/user/repository/IUserRepository";
 import { comparePassword } from "@/infrastructure/security/bcrypt";
 import { generateToken } from "@/infrastructure/security/jwt";
 
