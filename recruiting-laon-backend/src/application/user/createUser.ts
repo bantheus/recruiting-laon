@@ -1,6 +1,6 @@
 import type { IUserRepository } from "@/domain/repository/IUserRepository";
 import { User } from "@/domain/user";
-import { hashPassword } from "@/infrastructure/bcrypt";
+import { hashPassword } from "@/infrastructure/security/bcrypt";
 import { createId } from "@paralleldrive/cuid2";
 
 export class CreateUser {

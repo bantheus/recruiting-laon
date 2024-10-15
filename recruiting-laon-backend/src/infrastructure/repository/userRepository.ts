@@ -35,4 +35,29 @@ export class UserRepository implements IUserRepository {
 
 		return null;
 	}
+
+	async findByEmailWithPassword(email: string): Promise<User | null> {
+		const result = await db
+			.select({
+				id: userSchema.id,
+				name: userSchema.name,
+				email: userSchema.email,
+				password: userSchema.password,
+			})
+			.from(userSchema)
+			.where(eq(userSchema.email, email));
+
+		if (result.length > 0) {
+			const userData = result[0];
+
+			return {
+				id: userData.id,
+				name: userData.name,
+				email: userData.email,
+				password: userData.password,
+			};
+		}
+
+		return null;
+	}
 }

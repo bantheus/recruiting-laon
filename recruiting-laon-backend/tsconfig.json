@@ -5,6 +5,10 @@
     "lib": [
       "es2023"
     ],
+    "typeRoots": [
+      "./node_modules/@types",
+      "./types"
+    ],
     "module": "node16",
     "target": "es2022",
     "strict": true,
