@@ -1,5 +1,7 @@
 "use client";
 
+import Header from "@/app/components/header";
+import Spinner from "@/app/components/spinner";
 import { Button } from "@/app/components/ui/button";
 import {
 	Form,
@@ -10,6 +12,7 @@ import {
 } from "@/app/components/ui/form";
 import { Input } from "@/app/components/ui/input";
 import { PasswordInput } from "@/app/components/ui/password-input";
+import { toast } from "@/app/hooks/use-toast";
 import { type LoginSchema, loginSchema } from "@/app/schemas/login-schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
@@ -39,66 +42,87 @@ export default function LoginPage() {
 				throw new Error(errorData.error);
 			}
 
+			toast({
+				title: "Login efetuado com sucesso",
+				variant: "success",
+			});
+
 			window.location.href = "/filmes-series";
 		} catch (error) {
 			console.error(error);
+			toast({
+				title: "Erro ao realizar login. Verifique suas credenciais.",
+				variant: "destructive",
+			});
 		}
 	};
 
 	return (
-		<div className="flex flex-col justify-center h-screen bg-[#282739] px-5">
-			<div className="gap-2 flex flex-col">
-				<h2 className="text-white font-semibold text-2xl">Entrar</h2>
-				<p className="text-[#B5B3CB]">Bem-vindo(a) de volta!</p>
-			</div>
+		<>
+			<Header />
+			<main className="flex flex-col justify-center h-screen bg-background px-5">
+				<div className="gap-2 flex flex-col">
+					<h2 className="text-white font-semibold text-2xl">Entrar</h2>
+					<p className="text-[#B5B3CB]">Bem-vindo(a) de volta!</p>
+				</div>
 
-			<Form {...form}>
-				<form
-					onSubmit={form.handleSubmit(onSubmit)}
-					className="space-y-6 mt-10"
-				>
-					<FormField
-						control={form.control}
-						name="email"
-						render={({ field }) => (
-							<FormItem>
-								<FormControl>
-									<Input type="email" placeholder="Email" {...field} />
-								</FormControl>
-								<FormMessage />
-							</FormItem>
-						)}
-					/>
-					<FormField
-						control={form.control}
-						name="password"
-						render={({ field }) => (
-							<FormItem>
-								<FormControl className="relative">
-									<PasswordInput {...field} />
-								</FormControl>
-								<FormMessage />
-							</FormItem>
-						)}
-					/>
+				<Form {...form}>
+					<form
+						onSubmit={form.handleSubmit(onSubmit)}
+						className="space-y-6 mt-10"
+					>
+						<FormField
+							control={form.control}
+							name="email"
+							render={({ field }) => (
+								<FormItem>
+									<FormControl>
+										<Input
+											type="email"
+											placeholder="Email"
+											{...field}
+											disabled={form.formState.isSubmitting}
+										/>
+									</FormControl>
+									<FormMessage />
+								</FormItem>
+							)}
+						/>
+						<FormField
+							control={form.control}
+							name="password"
+							render={({ field }) => (
+								<FormItem>
+									<FormControl className="relative">
+										<PasswordInput
+											{...field}
+											disabled={form.formState.isSubmitting}
+										/>
+									</FormControl>
+									<FormMessage />
+								</FormItem>
+							)}
+						/>
+						<Button
+							type="submit"
+							className="w-full bg-white text-gray-100 font-semibold mt-2"
+							disabled={form.formState.isSubmitting}
+						>
+							{form.formState.isSubmitting ? <Spinner /> : "Entrar"}
+						</Button>
+					</form>
+				</Form>
+
+				<Link href="/signup">
 					<Button
 						type="submit"
-						className="w-full bg-white text-gray-100 font-semibold mt-2"
+						variant="outline"
+						className="w-full bg-tr text-white font-semibold mt-2 uppercase"
 					>
-						Entrar
+						Cadastrar
 					</Button>
-				</form>
-			</Form>
-
-			<Link href="">
-				<Button
-					type="submit"
-					variant="outline"
-					className="w-full bg-tr text-white font-semibold mt-2 uppercase"
-				>
-					Cadastrar
-				</Button>
-			</Link>
-		</div>
+				</Link>
+			</main>
+		</>
 	);
 }

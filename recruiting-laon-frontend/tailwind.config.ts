@@ -17,6 +17,9 @@ const config: Config = {
 					400: "#636177",
 					500: "#9895B4",
 				},
+				background: {
+					DEFAULT: "hsl(var(--background))",
+				},
 				primary: {
 					DEFAULT: "hsl(var(--primary))",
 				},
