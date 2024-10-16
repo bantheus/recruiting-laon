@@ -1,7 +1,7 @@
-import type { IUserRepository } from "@/domain/user/repository/IUserRepository";
-import type { User } from "@/domain/user/user";
 import { createId } from "@paralleldrive/cuid2";
 import { eq } from "drizzle-orm";
+import type { IUserRepository } from "../../domain/user/repository/IUserRepository";
+import type { User } from "../../domain/user/user";
 import { db } from "../database/connection";
 import { user as userSchema } from "../database/schema";
 

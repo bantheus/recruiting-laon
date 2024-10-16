@@ -1,9 +1,9 @@
-import { CreateMedia } from "@/application/media/createMedia";
-import { FindMedia } from "@/application/media/findMedia";
-import { MediaType } from "@/domain/media/media";
-import { MediaRepository } from "@/infrastructure/repository/mediaRepository";
 import type { FastifyPluginAsyncZod } from "fastify-type-provider-zod";
 import z from "zod";
+import { CreateMedia } from "../../application/media/createMedia";
+import { FindMedia } from "../../application/media/findMedia";
+import { MediaType } from "../../domain/media/media";
+import { MediaRepository } from "../../infrastructure/repository/mediaRepository";
 
 export const mediaRoutes: FastifyPluginAsyncZod = async (app, _opts) => {
 	const mediaRepository = new MediaRepository();

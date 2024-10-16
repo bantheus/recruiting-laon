@@ -1,11 +1,11 @@
-import { mediaRoutes } from "@/interfaces/http/mediaController";
-import { userRoutes } from "@/interfaces/http/userController";
 import fastify from "fastify";
 import {
 	type ZodTypeProvider,
 	serializerCompiler,
 	validatorCompiler,
 } from "fastify-type-provider-zod";
+import { mediaRoutes } from "../interfaces/http/mediaController";
+import { userRoutes } from "../interfaces/http/userController";
 import { errorHandler } from "./errors/errorHandler";
 
 async function createServer() {

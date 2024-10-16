@@ -1,5 +1,5 @@
-import { MediaType } from "@/domain/media/media";
 import { createId } from "@paralleldrive/cuid2";
+import { MediaType } from "../../domain/media/media";
 import { db } from "./connection";
 import { media as mediaSchema } from "./schema";
 

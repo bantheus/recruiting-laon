@@ -1,7 +1,7 @@
-import type { IUserRepository } from "@/domain/user/repository/IUserRepository";
-import { User } from "@/domain/user/user";
-import { hashPassword } from "@/infrastructure/security/bcrypt";
 import { createId } from "@paralleldrive/cuid2";
+import type { IUserRepository } from "../../domain/user/repository/IUserRepository";
+import { User } from "../../domain/user/user";
+import { hashPassword } from "../../infrastructure/security/bcrypt";
 
 export class CreateUser {
 	constructor(private userRepository: IUserRepository) {}

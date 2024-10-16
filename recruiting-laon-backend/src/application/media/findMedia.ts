@@ -1,5 +1,5 @@
-import type { Media } from "@/domain/media/media";
-import type { IMediaRepository } from "@/domain/media/repository/IMediaRepository";
+import type { Media } from "../../domain/media/media";
+import type { IMediaRepository } from "../../domain/media/repository/IMediaRepository";
 
 export class FindMedia {
 	constructor(private mediaRepository: IMediaRepository) {}

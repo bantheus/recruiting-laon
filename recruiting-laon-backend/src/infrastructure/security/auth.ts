@@ -1,6 +1,6 @@
-import { env } from "@/env";
 import type { FastifyReply, FastifyRequest } from "fastify";
 import jwt from "jsonwebtoken";
+import { env } from "../../env";
 
 export async function verifyToken(
 	request: FastifyRequest,

@@ -1,6 +1,6 @@
-import { Media } from "@/domain/media/media";
-import type { IMediaRepository } from "@/domain/media/repository/IMediaRepository";
 import { createId } from "@paralleldrive/cuid2";
+import { Media } from "../../domain/media/media";
+import type { IMediaRepository } from "../../domain/media/repository/IMediaRepository";
 
 export class CreateMedia {
 	constructor(private mediaRepository: IMediaRepository) {}

@@ -15,11 +15,10 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "moduleResolution": "node16",
-    "baseUrl": ".",
-    "paths": {
-      "@/*": [
-        "src/*"
-      ]
-    }
-  }
+    "outDir": "./dist"
+  },
+  "include": [
+    "src/**/*",
+    "types.d.ts"
+  ]
 }

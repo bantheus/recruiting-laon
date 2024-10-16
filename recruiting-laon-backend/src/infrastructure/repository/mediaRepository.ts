@@ -1,8 +1,7 @@
-import type { Media, MediaType } from "@/domain/media/media";
-
-import type { IMediaRepository } from "@/domain/media/repository/IMediaRepository";
 import { createId } from "@paralleldrive/cuid2";
 import { ilike, or, sql } from "drizzle-orm";
+import type { Media, MediaType } from "../../domain/media/media";
+import type { IMediaRepository } from "../../domain/media/repository/IMediaRepository";
 import { db } from "../database/connection";
 import { media as mediaSchema } from "../database/schema";
 

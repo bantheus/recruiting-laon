@@ -1,8 +1,8 @@
-import { CreateUser } from "@/application/user/createUser";
-import { LoginUser } from "@/application/user/loginUser";
-import { UserRepository } from "@/infrastructure/repository/userRepository";
 import type { FastifyPluginAsyncZod } from "fastify-type-provider-zod";
 import z from "zod";
+import { CreateUser } from "../../application/user/createUser";
+import { LoginUser } from "../../application/user/loginUser";
+import { UserRepository } from "../../infrastructure/repository/userRepository";
 
 export const userRoutes: FastifyPluginAsyncZod = async (app, _opts) => {
 	const userRepository = new UserRepository();
