@@ -10,6 +10,13 @@ const config: Config = {
 	theme: {
 		extend: {
 			colors: {
+				gray: {
+					100: "#1F1D2F",
+					200: "#282639",
+					300: "#48465B",
+					400: "#636177",
+					500: "#9895B4",
+				},
 				primary: {
 					DEFAULT: "hsl(var(--primary))",
 				},
