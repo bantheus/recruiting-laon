@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@layer base {
+  :root {
+    --primary: 194 76% 57%;
+    --primary-light: 194 93% 81%;
+    --primary-dark: 194 69% 30%;
+    --negative: 0 58% 45%;
+    --warning: 43 75% 57%;
+    --successful: 147 75% 57%;
+    --informational: 252 74% 56%;
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+}
