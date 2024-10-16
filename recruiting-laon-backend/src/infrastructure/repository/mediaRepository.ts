@@ -1,8 +1,8 @@
-import type { Media } from "@/domain/media/media";
+import type { Media, MediaType } from "@/domain/media/media";
 
 import type { IMediaRepository } from "@/domain/media/repository/IMediaRepository";
 import { createId } from "@paralleldrive/cuid2";
-import { eq, sql } from "drizzle-orm";
+import { ilike, or, sql } from "drizzle-orm";
 import { db } from "../database/connection";
 import { media as mediaSchema } from "../database/schema";
 
@@ -28,28 +28,62 @@ export class MediaRepository implements IMediaRepository {
 		return media;
 	}
 
-	async findByName(
-		name: string,
+	async findBySearchTerm(
+		searchTerm: string,
 		page: number,
 		pageSize: number,
 	): Promise<{ items: Media[]; total: number }> {
 		const offset = (page - 1) * pageSize;
 
+		const searchPattern = `%${searchTerm}%`;
+
 		const totalResult = await db
-			.select({ count: sql`COUNT(*)` })
+			.select({ count: sql<number>`COUNT(*)` })
 			.from(mediaSchema)
-			.where(eq(mediaSchema.name, name));
+			.where(
+				or(
+					ilike(mediaSchema.name, searchPattern),
+					sql`EXISTS (
+							SELECT 1
+							FROM jsonb_array_elements_text(${mediaSchema.actors}) AS actor
+							WHERE actor ILIKE ${searchPattern}
+					)`,
+					ilike(mediaSchema.director, searchPattern),
+				),
+			);
 
-		const total = totalResult[0]?.count || 0;
+		const total = Number(totalResult[0]?.count) || 0;
 
-		const query = db
+		const query = await db
 			.select()
 			.from(mediaSchema)
-			.where(eq(mediaSchema.name, name))
+			.where(
+				or(
+					ilike(mediaSchema.name, searchPattern),
+					sql`EXISTS (
+							SELECT 1
+							FROM jsonb_array_elements_text(${mediaSchema.actors}) AS actor
+							WHERE actor ILIKE ${searchPattern}
+					)`,
+					ilike(mediaSchema.director, searchPattern),
+				),
+			)
 			.limit(pageSize)
 			.offset(offset);
 
-		const items = await query;
+		const items: Media[] = query.map((item) => ({
+			...item,
+			actors: item.actors
+				? (item.actors as unknown as string[]).map(String)
+				: [],
+			categories: item.categories
+				? (item.categories as unknown as string[]).map(String)
+				: [],
+			awards: item.awards
+				? (item.awards as unknown as string[]).map(String)
+				: [],
+			type: item.type as MediaType,
+		}));
 
 		return { items, total };
 	}

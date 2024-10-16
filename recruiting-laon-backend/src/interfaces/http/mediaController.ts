@@ -1,4 +1,5 @@
 import { CreateMedia } from "@/application/media/createMedia";
+import { FindMedia } from "@/application/media/findMedia";
 import { MediaType } from "@/domain/media/media";
 import { MediaRepository } from "@/infrastructure/repository/mediaRepository";
 import type { FastifyPluginAsyncZod } from "fastify-type-provider-zod";
@@ -8,6 +9,7 @@ export const mediaRoutes: FastifyPluginAsyncZod = async (app, _opts) => {
 	const mediaRepository = new MediaRepository();
 
 	const createMedia = new CreateMedia(mediaRepository);
+	const findMedia = new FindMedia(mediaRepository);
 
 	app.post(
 		"/media",
@@ -42,6 +44,32 @@ export const mediaRoutes: FastifyPluginAsyncZod = async (app, _opts) => {
 					type: mediaType,
 				});
 				reply.code(201).send(media);
+			} catch (error) {
+				reply.status(400).send({
+					error:
+						error instanceof Error ? error.message : "Erro interno do servidor",
+				});
+			}
+		},
+	);
+
+	app.get(
+		"/search",
+		{
+			schema: {
+				querystring: z.object({
+					searchTerm: z.string(),
+					page: z.number().default(1),
+					limit: z.number().default(10),
+				}),
+			},
+		},
+		async (request, reply) => {
+			const { searchTerm, page, limit } = request.query;
+
+			try {
+				const result = await findMedia.execute({ searchTerm, page, limit });
+				reply.code(200).send(result);
 			} catch (error) {
 				reply.status(400).send({
 					error:
