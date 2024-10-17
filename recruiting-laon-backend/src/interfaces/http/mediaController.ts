@@ -59,8 +59,8 @@ export const mediaRoutes: FastifyPluginAsyncZod = async (app, _opts) => {
 			schema: {
 				querystring: z.object({
 					searchTerm: z.string(),
-					page: z.number().default(1),
-					limit: z.number().default(10),
+					page: z.preprocess((val) => Number(val), z.number().default(1)),
+					limit: z.preprocess((val) => Number(val), z.number().default(10)),
 				}),
 			},
 		},
