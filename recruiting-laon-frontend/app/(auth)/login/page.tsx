@@ -47,7 +47,7 @@ export default function LoginPage() {
 				variant: "success",
 			});
 
-			window.location.href = "/filmes-series";
+			window.location.href = "/";
 		} catch (error) {
 			console.error(error);
 			toast({

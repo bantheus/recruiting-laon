@@ -1,6 +1,6 @@
 import { type NextRequest, NextResponse } from "next/server";
 
-const protectedRoutes = ["/filmes-series"];
+const protectedRoutes = ["/", "/filmes", "/series"];
 
 export function middleware(req: NextRequest) {
 	const token = req.cookies.get("token")?.value;
@@ -13,12 +13,12 @@ export function middleware(req: NextRequest) {
 	}
 
 	if (token && (pathname === "/login" || pathname === "/signup")) {
-		return NextResponse.redirect(new URL("/filmes-series", req.url));
+		return NextResponse.redirect(new URL("/", req.url));
 	}
 
 	return NextResponse.next();
 }
 
 export const config = {
-	matcher: ["/filmes-series/:path*", "/login", "/signup"],
+	matcher: ["/", "/filmes/:path*", "/series/:path*", "/login", "/signup"],
 };
