@@ -4,11 +4,11 @@ import Header from "@/app/components/header";
 import Spinner from "@/app/components/spinner";
 import { Button } from "@/app/components/ui/button";
 import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormMessage,
+	Form,
+	FormControl,
+	FormField,
+	FormItem,
+	FormMessage,
 } from "@/app/components/ui/form";
 import { Input } from "@/app/components/ui/input";
 import { PasswordInput } from "@/app/components/ui/password-input";
@@ -61,7 +61,7 @@ export default function SignupPage() {
 	return (
 		<>
 			<Header />
-			<main className="flex flex-col justify-center bg-background px-5 pt-16 py-10">
+			<main className="flex flex-col justify-center min-h-screen bg-background px-5 pt-16 py-10">
 				<div className="gap-2 flex flex-col">
 					<h2 className="text-white font-semibold text-2xl">Cadastre-se</h2>
 					<p className="text-[#B5B3CB]">

@@ -1,6 +1,9 @@
 import type { MediaItem, MediaResponse } from "@/types/media";
-import Image from "next/image";
+import { Suspense } from "react";
+import { v4 as uuidv4 } from "uuid";
 import { ComingSoon } from "./components/coming-soon";
+import MediaGrid from "./components/media-grid";
+import { Skeleton } from "./components/ui/skeleton";
 
 async function fetchMedia(): Promise<MediaResponse> {
 	const res = await fetch(
@@ -36,19 +39,19 @@ export default async function Home() {
 				Filmes
 			</h3>
 
-			<div className="grid grid-cols-2 gap-4">
-				{movies.slice(0, 6).map((movie: MediaItem) => (
-					<div key={movie.id} className="relative w-full h-[234px]">
-						<Image
-							src={movie.coverLink}
-							alt={movie.name}
-							fill
-							quality={100}
-							className="absolute w-full h-full top-0 left-0 object-cover"
-						/>
+			<Suspense
+				fallback={
+					<div className="grid grid-cols-2 gap-4">
+						{Array.from({ length: 6 }).map(() => (
+							<div key={uuidv4()} className="relative w-full h-[234px]">
+								<Skeleton className="w-full h-full" />
+							</div>
+						))}
 					</div>
-				))}
-			</div>
+				}
+			>
+				<MediaGrid media={movies} />
+			</Suspense>
 		</main>
 	);
 }

@@ -60,7 +60,7 @@ export default function LoginPage() {
 	return (
 		<>
 			<Header />
-			<main className="flex flex-col justify-center h-screen bg-background px-5 pt-16 py-10">
+			<main className="flex flex-col justify-center min-h-screen bg-background px-5 pt-16 py-10">
 				<div className="gap-2 flex flex-col">
 					<h2 className="text-white font-semibold text-2xl">Entrar</h2>
 					<p className="text-[#B5B3CB]">Bem-vindo(a) de volta!</p>
