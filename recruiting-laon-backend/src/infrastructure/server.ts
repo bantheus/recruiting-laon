@@ -10,7 +10,7 @@ import { userRoutes } from "../interfaces/http/userController";
 import { errorHandler } from "./errors/errorHandler";
 
 async function createServer() {
-	const app = fastify({ logger: true }).withTypeProvider<ZodTypeProvider>();
+	const app = fastify().withTypeProvider<ZodTypeProvider>();
 
 	app.register(fastifyCors, {
 		origin: "*",

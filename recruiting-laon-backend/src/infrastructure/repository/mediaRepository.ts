@@ -1,5 +1,5 @@
 import { createId } from "@paralleldrive/cuid2";
-import { ilike, or, sql } from "drizzle-orm";
+import { eq, ilike, or, sql } from "drizzle-orm";
 import type { Media, MediaType } from "../../domain/media/media";
 import type { IMediaRepository } from "../../domain/media/repository/IMediaRepository";
 import { db } from "../database/connection";
@@ -85,5 +85,33 @@ export class MediaRepository implements IMediaRepository {
 		}));
 
 		return { items, total };
+	}
+
+	async findById(id: string): Promise<Media | null> {
+		const result = await db
+			.select()
+			.from(mediaSchema)
+			.where(eq(mediaSchema.id, id))
+			.limit(1);
+
+		if (!result.length) {
+			return null;
+		}
+
+		const item = result[0];
+
+		return {
+			...item,
+			actors: item.actors
+				? (item.actors as unknown as string[]).map(String)
+				: [],
+			categories: item.categories
+				? (item.categories as unknown as string[]).map(String)
+				: [],
+			awards: item.awards
+				? (item.awards as unknown as string[]).map(String)
+				: [],
+			type: item.type as MediaType,
+		};
 	}
 }

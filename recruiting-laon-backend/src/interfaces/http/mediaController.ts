@@ -2,6 +2,7 @@ import type { FastifyPluginAsyncZod } from "fastify-type-provider-zod";
 import z from "zod";
 import { CreateMedia } from "../../application/media/createMedia";
 import { FindMedia } from "../../application/media/findMedia";
+import { FindMediaById } from "../../application/media/findMediaById";
 import { MediaType } from "../../domain/media/media";
 import { MediaRepository } from "../../infrastructure/repository/mediaRepository";
 
@@ -10,6 +11,7 @@ export const mediaRoutes: FastifyPluginAsyncZod = async (app, _opts) => {
 
 	const createMedia = new CreateMedia(mediaRepository);
 	const findMedia = new FindMedia(mediaRepository);
+	const findMediaById = new FindMediaById(mediaRepository);
 
 	app.post(
 		"/media",
@@ -74,6 +76,35 @@ export const mediaRoutes: FastifyPluginAsyncZod = async (app, _opts) => {
 				reply.status(400).send({
 					error:
 						error instanceof Error ? error.message : "Erro interno do servidor",
+				});
+			}
+		},
+	);
+
+	app.get(
+		"/media/:id",
+		{
+			schema: {
+				params: z.object({
+					id: z.string(),
+				}),
+			},
+		},
+		async (request, reply) => {
+			const { id } = request.params;
+
+			try {
+				const media = await findMediaById.execute(id);
+
+				if (!media) {
+					return reply.status(404).send({ message: "Media not found" });
+				}
+
+				reply.code(200).send(media);
+			} catch (error) {
+				reply.status(400).send({
+					error:
+						error instanceof Error ? error.message : "Internal server error",
 				});
 			}
 		},

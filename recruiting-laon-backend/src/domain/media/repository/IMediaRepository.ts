@@ -7,4 +7,5 @@ export interface IMediaRepository {
 		page: number,
 		pageSize: number,
 	): Promise<{ items: Media[]; total: number }>;
+	findById(id: string): Promise<Media | null>;
 }
