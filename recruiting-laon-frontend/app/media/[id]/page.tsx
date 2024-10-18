@@ -8,7 +8,7 @@ import { v4 as uuidv4 } from "uuid";
 
 async function fetchMediaById(id: string): Promise<MediaItem | null> {
 	try {
-		const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/media/${id}`, {
+		const res = await fetch(`${process.env.API_URL}/media/${id}`, {
 			method: "GET",
 			headers: {
 				"Content-Type": "application/json",

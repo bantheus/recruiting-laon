@@ -6,7 +6,7 @@ import { MediaSection } from "./components/media-section";
 
 async function fetchMedia(): Promise<MediaResponse> {
 	const res = await fetch(
-		`${process.env.NEXT_PUBLIC_API_URL}/search?searchTerm=&page=1&limit=100`,
+		`${process.env.API_URL}/search?searchTerm=&page=1&limit=100`,
 		{
 			method: "GET",
 		},
