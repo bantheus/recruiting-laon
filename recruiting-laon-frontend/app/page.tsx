@@ -1,4 +1,5 @@
 import type { MediaItem, MediaResponse } from "@/types/media";
+import AuthHeader from "./components/auth-header";
 import { ComingSoon } from "./components/coming-soon";
 import { MediaSection } from "./components/media-section";
 
@@ -27,16 +28,19 @@ export default async function Home() {
 	);
 
 	return (
-		<main className="bg-background px-5 py-12">
-			<h3 className="font-semibold text-white">Em breve</h3>
-			<div className="mt-3">
-				<ComingSoon />
-			</div>
+		<>
+			<AuthHeader />
+			<main className="bg-background px-5 py-12">
+				<h3 className="font-semibold text-white">Em breve</h3>
+				<div className="mt-3">
+					<ComingSoon />
+				</div>
 
-			<h2 className="font-semibold text-2xl text-white mt-10">Populares</h2>
+				<h2 className="font-semibold text-2xl text-white mt-10">Populares</h2>
 
-			<MediaSection title="Filmes" media={movies} />
-			<MediaSection title="Séries" media={series} />
-		</main>
+				<MediaSection title="Filmes" media={movies} />
+				<MediaSection title="Séries" media={series} />
+			</main>
+		</>
 	);
 }

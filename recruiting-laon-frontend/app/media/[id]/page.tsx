@@ -1,3 +1,4 @@
+import AuthHeader from "@/app/components/auth-header";
 import Separator from "@/app/components/separator";
 import type { MediaItem } from "@/types/media";
 import Image from "next/image";
@@ -36,6 +37,7 @@ export default async function MediaPage({
 
 	return (
 		<>
+			<AuthHeader />
 			<div className="relative h-[513px]">
 				<Image
 					src={media.coverLink}
@@ -65,10 +67,10 @@ export default async function MediaPage({
 						</p>
 					</div>
 
-					<div className="flex gap-2 mt-3">
+					<div className="flex flex-wrap gap-2 mt-3">
 						{media.categories.map((category) => (
 							<span
-								className="border border-gray-300 text-white rounded-full py-2 px-3 text-sm"
+								className="border whitespace-nowrapp border-gray-300 text-white rounded-full py-2 px-3 text-sm"
 								key={uuidv4()}
 							>
 								{category}
@@ -101,7 +103,7 @@ export default async function MediaPage({
 
 					<div className="flex flex-wrap gap-2 mt-4">
 						{media.awards.map((award, index) => (
-							<span className="whitespace-nowrap text-sm" key={uuidv4()}>
+							<span className=" text-sm" key={uuidv4()}>
 								{award}
 								{index < media.awards.length - 1 && ","}
 							</span>
