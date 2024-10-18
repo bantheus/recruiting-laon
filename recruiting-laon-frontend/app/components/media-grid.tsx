@@ -13,7 +13,7 @@ export default function MediaGrid({ media }: MediaGridProps) {
 				<Link
 					href={`/media/${item.id}`}
 					key={item.id}
-					className="relative w-full h-[234px] md:h-[254px] shadow-md xl:h-[454px]"
+					className="relative w-full h-[244px] md:h-[254px] shadow-md xl:h-[454px]"
 				>
 					<Image
 						src={item.coverLink}
