@@ -52,7 +52,7 @@ export default async function MediaPage({
 
 				<div className="h-full absolute top-0 left-0 w-full bg-gradient-to-t from-background to-background-0" />
 			</div>
-			<main className="bg-background text-gray-500 pb-16">
+			<main className="bg-background text-gray-500 h-svh flex items-center pb-16">
 				<div className="px-5 lg:px-28 flex flex-col lg:flex-row lg:pt-14 lg:gap-20">
 					<div className="relative min-w-[306px] h-[448px] shadow-md hidden lg:flex">
 						<Image

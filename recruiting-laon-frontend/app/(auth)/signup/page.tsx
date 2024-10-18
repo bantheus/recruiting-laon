@@ -61,8 +61,8 @@ export default function SignupPage() {
 	return (
 		<>
 			<Header />
-			<main className="md:bg-gray-100 md:py-8">
-				<div className="flex md:rounded-lg md:mx-auto md:max-w-[588px] md:px-14 md:pt-10 flex-col justify-center min-h-screen bg-background px-5 pt-16 py-10">
+			<main className="md:bg-gray-100 md:py-8 h-svh flex items-center w-full">
+				<div className="flex md:rounded-lg md:mx-auto w-full md:max-w-[588px] md:px-14 md:pt-10 flex-col justify-center h-screen md:h-auto bg-background px-5 pt-16 py-10">
 					<div className="gap-2 flex flex-col">
 						<h2 className="text-white font-semibold text-2xl">Cadastre-se</h2>
 						<p className="text-[#B5B3CB]">

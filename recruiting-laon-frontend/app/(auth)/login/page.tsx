@@ -60,8 +60,8 @@ export default function LoginPage() {
 	return (
 		<>
 			<Header />
-			<main className="md:bg-gray-100 md:py-8">
-				<div className="flex md:rounded-lg md:mx-auto flex-col md:max-w-[588px] justify-center min-h-screen bg-background px-5 pt-16 py-10 md:px-14 md:pt-10">
+			<main className="md:bg-gray-100 md:py-8 h-svh flex items-center w-full">
+				<div className="flex md:rounded-lg md:mx-auto flex-col w-full md:max-w-[588px] h-screen md:h-auto justify-center  bg-background px-5 pt-16 py-10 md:px-14 md:pt-10">
 					<div className="gap-2 flex flex-col">
 						<h2 className="text-white font-semibold text-2xl">Entrar</h2>
 						<p className="text-[#B5B3CB]">Bem-vindo(a) de volta!</p>

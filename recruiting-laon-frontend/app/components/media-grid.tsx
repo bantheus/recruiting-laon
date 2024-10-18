@@ -13,14 +13,14 @@ export default function MediaGrid({ media }: MediaGridProps) {
 				<Link
 					href={`/media/${item.id}`}
 					key={item.id}
-					className="relative w-full h-[234px] md:h-[254px] shadow-md"
+					className="relative w-full h-[234px] md:h-[254px] shadow-md xl:h-[454px]"
 				>
 					<Image
 						src={item.coverLink}
 						alt={item.name}
 						fill
 						quality={100}
-						className="absolute w-full h-full top-0 left-0 object-cover object-top md:h-[254px]"
+						className="absolute w-full h-full top-0 left-0 object-cover object-top md:h-[254px] xl:h-[454px]"
 					/>
 				</Link>
 			))}
