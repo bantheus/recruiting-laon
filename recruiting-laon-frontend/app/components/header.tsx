@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const Header = () => {
 	return (
-		<header className="bg-background p-5 border-b border-gray-300 flex justify-end">
+		<header className="md:px-28 md:justify-center bg-background md:bg-gray-100 p-5 border-b border-gray-300 flex justify-end">
 			<Image
 				src="/logo.png"
 				alt="Laon streaming"

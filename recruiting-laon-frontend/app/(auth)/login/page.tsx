@@ -60,68 +60,70 @@ export default function LoginPage() {
 	return (
 		<>
 			<Header />
-			<main className="flex flex-col justify-center min-h-screen bg-background px-5 pt-16 py-10">
-				<div className="gap-2 flex flex-col">
-					<h2 className="text-white font-semibold text-2xl">Entrar</h2>
-					<p className="text-[#B5B3CB]">Bem-vindo(a) de volta!</p>
-				</div>
+			<main className="md:bg-gray-100 md:py-8">
+				<div className="flex md:rounded-lg md:mx-auto flex-col md:max-w-[588px] justify-center min-h-screen bg-background px-5 pt-16 py-10 md:px-14 md:pt-10">
+					<div className="gap-2 flex flex-col">
+						<h2 className="text-white font-semibold text-2xl">Entrar</h2>
+						<p className="text-[#B5B3CB]">Bem-vindo(a) de volta!</p>
+					</div>
 
-				<Form {...form}>
-					<form
-						onSubmit={form.handleSubmit(onSubmit)}
-						className="space-y-6 mt-10"
-					>
-						<FormField
-							control={form.control}
-							name="email"
-							render={({ field }) => (
-								<FormItem>
-									<FormControl>
-										<Input
-											type="email"
-											placeholder="Email"
-											{...field}
-											disabled={form.formState.isSubmitting}
-										/>
-									</FormControl>
-									<FormMessage />
-								</FormItem>
-							)}
-						/>
-						<FormField
-							control={form.control}
-							name="password"
-							render={({ field }) => (
-								<FormItem>
-									<FormControl className="relative">
-										<PasswordInput
-											{...field}
-											disabled={form.formState.isSubmitting}
-										/>
-									</FormControl>
-									<FormMessage />
-								</FormItem>
-							)}
-						/>
+					<Form {...form}>
+						<form
+							onSubmit={form.handleSubmit(onSubmit)}
+							className="space-y-6 mt-10"
+						>
+							<FormField
+								control={form.control}
+								name="email"
+								render={({ field }) => (
+									<FormItem>
+										<FormControl>
+											<Input
+												type="email"
+												placeholder="Email"
+												{...field}
+												disabled={form.formState.isSubmitting}
+											/>
+										</FormControl>
+										<FormMessage />
+									</FormItem>
+								)}
+							/>
+							<FormField
+								control={form.control}
+								name="password"
+								render={({ field }) => (
+									<FormItem>
+										<FormControl className="relative">
+											<PasswordInput
+												{...field}
+												disabled={form.formState.isSubmitting}
+											/>
+										</FormControl>
+										<FormMessage />
+									</FormItem>
+								)}
+							/>
+							<Button
+								type="submit"
+								className="w-full bg-white text-gray-100 font-semibold mt-2"
+								disabled={form.formState.isSubmitting}
+							>
+								{form.formState.isSubmitting ? <Spinner /> : "Entrar"}
+							</Button>
+						</form>
+					</Form>
+
+					<Link href="/signup">
 						<Button
 							type="submit"
-							className="w-full bg-white text-gray-100 font-semibold mt-2"
-							disabled={form.formState.isSubmitting}
+							variant="outline"
+							className="w-full bg-tr text-white font-semibold mt-2 uppercase"
 						>
-							{form.formState.isSubmitting ? <Spinner /> : "Entrar"}
+							Cadastrar
 						</Button>
-					</form>
-				</Form>
-
-				<Link href="/signup">
-					<Button
-						type="submit"
-						variant="outline"
-						className="w-full bg-tr text-white font-semibold mt-2 uppercase"
-					>
-						Cadastrar
-					</Button>
-				</Link>
+					</Link>
+				</div>
 			</main>
 		</>
 	);

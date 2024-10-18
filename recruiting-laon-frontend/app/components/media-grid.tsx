@@ -8,19 +8,19 @@ interface MediaGridProps {
 
 export default function MediaGrid({ media }: MediaGridProps) {
 	return (
-		<div className="grid grid-cols-2 gap-4">
+		<div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
 			{media.slice(0, 6).map((item: MediaItem) => (
 				<Link
 					href={`/media/${item.id}`}
 					key={item.id}
-					className="relative w-full h-[234px]"
+					className="relative w-full h-[234px] md:h-[254px] shadow-md"
 				>
 					<Image
 						src={item.coverLink}
 						alt={item.name}
 						fill
 						quality={100}
-						className="absolute w-full h-full top-0 left-0 object-cover"
+						className="absolute w-full h-full top-0 left-0 object-cover object-top md:h-[254px]"
 					/>
 				</Link>
 			))}

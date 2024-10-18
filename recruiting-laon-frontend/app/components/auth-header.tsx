@@ -24,7 +24,7 @@ const AuthHeader = () => {
 	};
 
 	return (
-		<header className="bg-background p-5 border-b border-gray-300 flex items-center justify-between">
+		<header className="bg-background md:px-28 p-5 border-b border-gray-300 flex items-center justify-between">
 			<Link href="/">
 				<Image
 					src="/logo.png"
@@ -42,12 +42,15 @@ const AuthHeader = () => {
 					asChild
 					className="bg-gray-400 rounded-full size-7 p-1"
 				>
-					<User2Icon className="text-gray-100" />
+					<User2Icon className="text-gray-100 cursor-pointer" />
 				</DropdownMenuTrigger>
 				<DropdownMenuContent className="bg-gray-300 border-gray-200 mr-2">
 					<ul className="text-white">
 						{/* biome-ignore lint/a11y/useKeyWithClickEvents: <explanation> */}
-						<li className="py-1 px-2 flex items-center" onClick={handleLogout}>
+						<li
+							className="py-1 px-2 flex items-center cursor-pointer"
+							onClick={handleLogout}
+						>
 							<LogOut className="mr-2 size-4" />
 							Sair
 						</li>

@@ -61,93 +61,95 @@ export default function SignupPage() {
 	return (
 		<>
 			<Header />
-			<main className="flex flex-col justify-center min-h-screen bg-background px-5 pt-16 py-10">
-				<div className="gap-2 flex flex-col">
-					<h2 className="text-white font-semibold text-2xl">Cadastre-se</h2>
-					<p className="text-[#B5B3CB]">
-						Acompanhe os melhores filmes e séries.
-					</p>
-				</div>
-
-				<Form {...form}>
-					<form
-						onSubmit={form.handleSubmit(onSubmit)}
-						className="space-y-6 mt-10"
-					>
-						<FormField
-							control={form.control}
-							name="name"
-							render={({ field }) => (
-								<FormItem>
-									<FormControl>
-										<Input
-											type="text"
-											placeholder="Nome completo"
-											{...field}
-											disabled={form.formState.isSubmitting}
-										/>
-									</FormControl>
-									<FormMessage />
-								</FormItem>
-							)}
-						/>
-
-						<FormField
-							control={form.control}
-							name="email"
-							render={({ field }) => (
-								<FormItem>
-									<FormControl>
-										<Input
-											type="email"
-											placeholder="Email"
-											{...field}
-											disabled={form.formState.isSubmitting}
-										/>
-									</FormControl>
-									<FormMessage />
-								</FormItem>
-							)}
-						/>
-
-						<FormField
-							control={form.control}
-							name="password"
-							render={({ field }) => (
-								<FormItem>
-									<FormControl className="relative">
-										<PasswordInput
-											{...field}
-											disabled={form.formState.isSubmitting}
-										/>
-									</FormControl>
-									<FormMessage />
-								</FormItem>
-							)}
-						/>
-						<p className="text-xs text-gray-500">
-							Ao clicar em <strong>cadastrar</strong>, você está aceitando os
-							Termos e Condições e a Política de Privacidade da Laon.
+			<main className="md:bg-gray-100 md:py-8">
+				<div className="flex md:rounded-lg md:mx-auto md:max-w-[588px] md:px-14 md:pt-10 flex-col justify-center min-h-screen bg-background px-5 pt-16 py-10">
+					<div className="gap-2 flex flex-col">
+						<h2 className="text-white font-semibold text-2xl">Cadastre-se</h2>
+						<p className="text-[#B5B3CB]">
+							Acompanhe os melhores filmes e séries.
 						</p>
+					</div>
+
+					<Form {...form}>
+						<form
+							onSubmit={form.handleSubmit(onSubmit)}
+							className="space-y-6 mt-10"
+						>
+							<FormField
+								control={form.control}
+								name="name"
+								render={({ field }) => (
+									<FormItem>
+										<FormControl>
+											<Input
+												type="text"
+												placeholder="Nome completo"
+												{...field}
+												disabled={form.formState.isSubmitting}
+											/>
+										</FormControl>
+										<FormMessage />
+									</FormItem>
+								)}
+							/>
+
+							<FormField
+								control={form.control}
+								name="email"
+								render={({ field }) => (
+									<FormItem>
+										<FormControl>
+											<Input
+												type="email"
+												placeholder="Email"
+												{...field}
+												disabled={form.formState.isSubmitting}
+											/>
+										</FormControl>
+										<FormMessage />
+									</FormItem>
+								)}
+							/>
+
+							<FormField
+								control={form.control}
+								name="password"
+								render={({ field }) => (
+									<FormItem>
+										<FormControl className="relative">
+											<PasswordInput
+												{...field}
+												disabled={form.formState.isSubmitting}
+											/>
+										</FormControl>
+										<FormMessage />
+									</FormItem>
+								)}
+							/>
+							<p className="text-xs text-gray-500">
+								Ao clicar em <strong>cadastrar</strong>, você está aceitando os
+								Termos e Condições e a Política de Privacidade da Laon.
+							</p>
+							<Button
+								type="submit"
+								className="w-full bg-white text-gray-100 font-semibold mt-2"
+								disabled={form.formState.isSubmitting}
+							>
+								{form.formState.isSubmitting ? <Spinner /> : "Cadastrar"}
+							</Button>
+						</form>
+					</Form>
+
+					<Link href="/login">
 						<Button
 							type="submit"
-							className="w-full bg-white text-gray-100 font-semibold mt-2"
-							disabled={form.formState.isSubmitting}
+							variant="outline"
+							className="w-full bg-tr text-white font-semibold mt-2 uppercase"
 						>
-							{form.formState.isSubmitting ? <Spinner /> : "Cadastrar"}
+							Entrar
 						</Button>
-					</form>
-				</Form>
-
-				<Link href="/login">
-					<Button
-						type="submit"
-						variant="outline"
-						className="w-full bg-tr text-white font-semibold mt-2 uppercase"
-					>
-						Entrar
-					</Button>
-				</Link>
+					</Link>
+				</div>
 			</main>
 		</>
 	);
